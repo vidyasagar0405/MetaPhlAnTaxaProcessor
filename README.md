@@ -12,14 +12,41 @@ MetaPhlAnTaxaProcessor is a Python-based utility designed to streamline the down
 ## Table of Contents
 
 - [Installation](#installation)
+- [Usage](#usage)
 - [License](#license)
 
 ## Installation
+
+You can install the latest version of MetaPhlAnTaxaProcessor using pip:
 
 ```console
 pip install metaphlantaxaprocessor
 ```
 
+## Usage
+
+Once installed, you can use MetaPhlAnTaxaProcessor via the command line to process your MetaPhlAn output files.
+
+### Basic Command
+
+```console
+python -m metaphlantaxaprocessor.main INPUT_TSV_FILE
+```
+
+Where `INPUT_TSV_FILE` is the path to your MetaPhlAn-generated TSV file.
+
+### Available Options
+
+- `--outdir`: Specify the output directory for the generated CSV files (default is `<prefix>-taxa`).
+- `--combine`: Optionally combine the generated CSV files into a single Excel workbook.
+
+Example usage with options:
+
+```console
+python -m metaphlantaxaprocessor.main tests/test_data/Galaxy-res.tsv --outdir ./output --combine
+```
+
+This command will process the `Galaxy-res.tsv` file and store the CSVs in the `./output` directory, then combine them into a single Excel workbook.
 
 ## License
 
