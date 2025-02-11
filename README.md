@@ -5,6 +5,10 @@
 
 -----
 
+MetaPhlAnTaxaProcessor is a Python-based utility designed to streamline the downstream analysis of MetaPhlAn output. It processes MetaPhlAn's taxonomic profiling data, converting it into structured CSV files for each taxonomic rank (e.g., Kingdom, Phyla, Class, etc.). Additionally, it offers the option to consolidate these CSV files into a single Excel workbook, with each sheet named after the corresponding taxonomic rank. This tool enhances the accessibility and interpretability of metagenomic data, facilitating further statistical analysis and visualization.
+
+-----
+
 ## Table of Contents
 
 - [Installation](#installation)
@@ -15,6 +19,7 @@
 ```console
 pip install metaphlantaxaprocessor
 ```
+
 
 ## License
 
