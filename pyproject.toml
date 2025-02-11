@@ -24,7 +24,11 @@ classifiers = [
   "Programming Language :: Python :: Implementation :: CPython",
   "Programming Language :: Python :: Implementation :: PyPy",
 ]
-dependencies = []
+dependencies = [
+    "pandas",
+    "openpyxl",
+    "argparse",
+]
 
 [project.urls]
 Documentation = "https://github.com/vidyasagar0405/metaphlantaxaprocessor#readme"
@@ -59,3 +63,7 @@ exclude_lines = [
   "if __name__ == .__main__.:",
   "if TYPE_CHECKING:",
 ]
+
+
+[project.scripts]
+metaphlan-taxaprocessor = "metaphlantaxaprocessor.main:main"

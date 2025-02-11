@@ -30,7 +30,7 @@ Once installed, you can use MetaPhlAnTaxaProcessor via the command line to proce
 ### Basic Command
 
 ```console
-python -m metaphlantaxaprocessor.main INPUT_TSV_FILE
+metaphlan-taxaprocessor.main INPUT_TSV_FILE
 ```
 
 Where `INPUT_TSV_FILE` is the path to your MetaPhlAn-generated TSV file.
@@ -43,7 +43,7 @@ Where `INPUT_TSV_FILE` is the path to your MetaPhlAn-generated TSV file.
 Example usage with options:
 
 ```console
-python -m metaphlantaxaprocessor.main tests/test_data/Galaxy-res.tsv --outdir ./output --combine
+metaphlan-taxaprocessor.main tests/test_data/Galaxy-res.tsv --outdir ./output --combine
 ```
 
 This command will process the `Galaxy-res.tsv` file and store the CSVs in the `./output` directory, then combine them into a single Excel workbook.
