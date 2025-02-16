@@ -1,7 +1,22 @@
 #!/usr/bin/env python3
+
 import os
 import argparse
-from metaphlantaxaprocessor.utils import check_and_create_dir, combine_csv_to_xlsx, process_all_ranks
+from metaphlantaxaprocessor.utils import check_and_create_dir, combine_csv_to_xlsx, pre_process_ranks, get_info, get_unclassified
+
+
+# Define the taxonomic levels.
+LEVELS = [
+    ("Kingdom", "k__", "p__"),
+    ("Phyla", "p__", "c__"),
+    ("Class", "c__", "o__"),
+    ("Order", "o__", "f__"),
+    ("Family", "f__", "g__"),
+    ("Genus", "g__", "s__"),
+    ("Species", "s__", "t__"),
+    ("Species_with_strain", "t__", None, "s__"),
+]
+
 
 def main():
     parser = argparse.ArgumentParser( description="Process taxonomy TSV file into CSVs and optionally combine them into an XLSX workbook.")
@@ -20,22 +35,14 @@ def main():
 
     check_and_create_dir(outdir)
 
-    # Define the taxonomic levels.
-    levels = [
-        ("Kingdom", "k__", "p__"),
-        ("Phyla", "p__", "c__"),
-        ("Class", "c__", "o__"),
-        ("Order", "o__", "f__"),
-        ("Family", "f__", "g__"),
-        ("Genus", "g__", "s__"),
-        ("Species", "s__", "t__"),
-        ("Species_with_strain", "t__", None, "s__"),
-    ]
+    pre_process_ranks(infile, outdir, LEVELS)
 
-    process_all_ranks(infile, outdir, levels)
+    get_info(infile, f"{outdir}/info.txt")
+
+    get_unclassified(infile, f"{outdir}/Unclassified.csv")
 
     if args.combine:
-        combine_csv_to_xlsx(outdir, prefix, levels)
+        combine_csv_to_xlsx(outdir, prefix)
 
 
 if __name__ == "__main__":
